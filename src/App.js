@@ -11,7 +11,7 @@ function App() {
   const [icon, setIcon] = React.useState(null);
   const [error, setError] = React.useState(null);
 
-  const APIkey = 'c4f4c19d8378882f91fc37315c3609f7';
+  const APIkey = process.env.REACT_APP_KEY;
 
   function searchCity() {
     fetch(
@@ -44,7 +44,7 @@ function App() {
         />
         <IoMdSearch size={35} onClick={searchCity} />
       </div>
-      {!error ? (
+      {temp && !error ? (
         <div>
           <p>
             {temp} {name} {sys} {weather}
