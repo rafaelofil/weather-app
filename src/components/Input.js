@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Input({ id, value, setValue }) {
+function Input({ id, value, setValue, searchCity }) {
   return (
     <div>
       <input
@@ -9,6 +9,9 @@ function Input({ id, value, setValue }) {
         name={id}
         value={value}
         onChange={({ target }) => setValue(target.value)}
+        onKeyPress={(event) => {
+          if (event.key === 'Enter') searchCity();
+        }}
       />
     </div>
   );
