@@ -1,6 +1,4 @@
 import React from 'react';
-import { BiFontSize } from 'react-icons/bi';
-import { MdPermPhoneMsg } from 'react-icons/md';
 import './Input.css';
 
 function Input({ id, value, setValue, searchCity, ...props }) {
