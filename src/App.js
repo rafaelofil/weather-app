@@ -1,12 +1,13 @@
 import React from 'react';
+import './App.css';
 import Input from './components/Input';
 import { IoMdSearch } from 'react-icons/all';
 
 function App() {
   const [city, setCity] = React.useState('');
-  const [temp, setTemp] = React.useState(null);
+  const [temperature, setTemperature] = React.useState(null);
   const [name, setName] = React.useState(null);
-  const [sys, setSys] = React.useState(null);
+  const [country, setCountry] = React.useState(null);
   const [weather, setWeather] = React.useState(null);
   const [icon, setIcon] = React.useState(null);
   const [error, setError] = React.useState(null);
@@ -20,9 +21,9 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         const { main, name, sys, weather } = data;
-        setTemp(main.temp);
+        setTemperature(main.temp);
         setName(name);
-        setSys(sys.country);
+        setCountry(sys.country);
         setWeather(weather[0].description);
         setIcon(
           `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0]['icon']}.svg`,
@@ -34,25 +35,31 @@ function App() {
 
   return (
     <div>
-      <h1>Weather Application</h1>
-      <div>
+      <h1 className="title">Weather Application</h1>
+      <div className="search">
         <Input
           id="search"
           value={city}
           setValue={setCity}
           searchCity={searchCity}
+          className="input"
+          placeholder="Search for city"
         />
-        <IoMdSearch size={35} onClick={searchCity} />
+        <IoMdSearch size={35} onClick={searchCity} className="icon" />
       </div>
-      {temp && !error ? (
-        <div>
-          <p>
-            {temp} {name} {sys} {weather}
+      {temperature && !error ? (
+        <div className="weather">
+          <p className="name">
+            {name} <sup className="country">{country}</sup>
           </p>
-          <img src={icon} alt="Weather Icon" />
+          <p className="temperature">
+            {temperature} <sup className="celsius">ºC</sup>
+          </p>
+          <img className="iconClimate" src={icon} alt="Weather Icon" />
+          <p className="climate">{weather}</p>
         </div>
       ) : (
-        <p>{error}</p>
+        <p className="error">{error}</p>
       )}
     </div>
   );

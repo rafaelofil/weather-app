@@ -1,6 +1,7 @@
 import React from 'react';
+import './Input.css';
 
-function Input({ id, value, setValue, searchCity }) {
+function Input({ id, value, setValue, searchCity, ...props }) {
   return (
     <div>
       <input
@@ -12,6 +13,8 @@ function Input({ id, value, setValue, searchCity }) {
         onKeyPress={(event) => {
           if (event.key === 'Enter') searchCity();
         }}
+        {...props}
+        className="input"
       />
     </div>
   );
