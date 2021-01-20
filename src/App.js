@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import Input from './components/Input';
 import { IoMdSearch } from 'react-icons/all';
 
@@ -34,15 +35,17 @@ function App() {
 
   return (
     <div>
-      <h1>Weather Application</h1>
-      <div>
+      <h1 className="title">Weather Application</h1>
+      <div className="search">
         <Input
           id="search"
           value={city}
           setValue={setCity}
           searchCity={searchCity}
+          className="input"
+          placeholder="Search for city"
         />
-        <IoMdSearch size={35} onClick={searchCity} />
+        <IoMdSearch size={35} onClick={searchCity} className="icon" />
       </div>
       {temp && !error ? (
         <div>

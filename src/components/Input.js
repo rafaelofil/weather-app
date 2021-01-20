@@ -1,6 +1,9 @@
 import React from 'react';
+import { BiFontSize } from 'react-icons/bi';
+import { MdPermPhoneMsg } from 'react-icons/md';
+import './Input.css';
 
-function Input({ id, value, setValue, searchCity }) {
+function Input({ id, value, setValue, searchCity, ...props }) {
   return (
     <div>
       <input
@@ -12,6 +15,8 @@ function Input({ id, value, setValue, searchCity }) {
         onKeyPress={(event) => {
           if (event.key === 'Enter') searchCity();
         }}
+        {...props}
+        className="input"
       />
     </div>
   );
