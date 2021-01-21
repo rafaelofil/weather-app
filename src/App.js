@@ -53,7 +53,8 @@ function App() {
             {name} <sup className="country">{country}</sup>
           </p>
           <p className="temperature">
-            {temperature} <sup className="celsius">ºC</sup>
+            {temperature}
+            <span className="celsius">ºC</span>
           </p>
           <img className="iconClimate" src={icon} alt="Weather Icon" />
           <p className="climate">{weather}</p>
